@@ -1,0 +1,136 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+//nama:widi avandi
+//nim:12250512734
+float Tarik_Tunai(float saldo){
+    system("cls");
+    float tarik;
+    printf("Masukkan jumlah Tarik Tunai: ");
+    scanf("%f", &tarik);
+    if(tarik <= saldo){
+        saldo -= tarik;
+        system("cls");
+        printf("Tarik Tunai Anda berhasil\nSaldo Anda: Rp %.2f\n", saldo);
+    }else{
+        system("cls");
+        printf("Saldo Anda Tidak Cukup\n");
+    }
+    printf("\nTekan 0 untuk kembali ke menu transaksi: ");
+    int kembali;
+    while(1){
+        scanf("%d", &kembali);
+        if (kembali == 0){
+            system("cls");
+            return saldo;
+        }else{
+        	system("cls");
+        	printf("Saldo Anda: Rp %.2f\n", saldo);
+            printf("\nInput tidak valid. Tekan 0 untuk kembali ke menu transaksi: ");
+        }
+    }
+}
+
+void Cek_Saldo(float saldo) {
+    system("cls");
+    printf("Saldo Anda: Rp. %.2f\n", saldo);
+    printf("\nTekan 0 untuk kembali ke menu transaksi: ");
+    int kembali;
+    while (1) {
+        scanf("%d", &kembali);
+        if(kembali == 0){
+            system("cls");
+            return;
+        }else{
+        	system("cls");
+        	printf("Saldo Anda: Rp. %.2f\n", saldo);
+        	printf("\nInput tidak valid. Tekan 0 untuk kembali ke menu transaksi: ");
+        }
+    }
+}
+
+void Transaksi(float *saldo){
+    int pilih;
+    do{
+        printf("Selamat Datang di BANK PERAWANG \n\nPILIH MENU Tarik TunaiI\n\n1. Cek Saldo\n2. Transaksi\n3. Setor Tunai\n4. Keluar\n\n");
+        printf("Pilih: ");
+        
+        while(scanf("%d", &pilih) != 1 || pilih < 1 || pilih > 4) {
+        	system("cls");
+        	printf("SELAMAT DATANG DI BANK PERAWANG\n\nPILIH MENU TRANSAKSI\n\n1. Cek Saldo\n2. Setor Tunai\n3. Tarik Tunai\n4. Keluar\n\n");
+            printf("Pilihan tidak valid.\nPilih: ");
+            while (getchar() != '\n');
+        }
+
+        switch (pilih){
+            case 1:
+                Tarik_Tunai(*saldo);
+                break;
+            case 2:
+                Cek_Saldo(*saldo);
+                break;
+            case 3:
+                void transaksi(float*saldo);
+                break;
+            case 4:
+            	float Setor_Tunai(float *saldo);
+            case 5:
+            	system("cls");
+                printf("Terima kasih telah menggunakan layanan BANK PERAWANG.\n");
+                break;
+            default:
+                printf("Pilihan tidak tersedia.\n");
+        }
+    }while(pilih != 4);
+}
+
+float Setor_Tunai(float saldo){
+    system("cls");
+    float setor;
+    printf("Masukkan jumlah setor tunai: ");
+    scanf("%f", &setor);
+    saldo += setor;
+    system("cls");
+    printf("Setor tunai Anda berhasil\nSaldo Anda: Rp %.2f\n", saldo);
+    printf("\nTekan 0 untuk kembali ke menu transaksi: ");
+    int kembali;
+    while(1){
+        scanf("%d", &kembali);
+        if (kembali == 0) {
+            system("cls");
+            return saldo;
+        }else{
+        	system("cls");
+        	printf("Saldo Anda: Rp %.2f\n", saldo);
+            printf("\nInput tidak valid. Tekan 0 untuk kembali ke menu transaksi: ");
+        }
+    }
+}
+
+int main(){
+    int pin1 = 182002;
+    int pin2;
+    int step = 0;
+    float saldo = 0.0;
+	
+    printf("BANK PERAWANG\n\nPIN: ");
+    scanf("%i", &pin2);
+    system("cls");
+
+    if(pin2 == pin1){
+       void transaksi(float *saldo);
+    }else{
+        while(step < 2){
+            printf("BANK PERAWANG\n\nPIN Anda salah. Silakan coba lagi.\nPIN: ");
+            scanf("%i", &pin2);
+            system("cls");
+            if(pin2 == pin1){
+                void transaksi(float*saldo);
+                return 0;
+            }
+            step++;
+        }
+        printf("Akun Anda Diblokir\n");
+    }
+    return 0;
+}
